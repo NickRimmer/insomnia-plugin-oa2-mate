@@ -1,0 +1,38 @@
+{
+  "name": "insomnia-plugin-oa2-mate",
+  "version": "0.1.0",
+  "private": true,
+  "insomnia": {
+    "name": "oa2-mate",
+    "displayName": "oAuth 2 mate",
+    "description": "Always ready with the latest oAuth 2 token as template variable. Have a stress-free coding/testing!",
+    "unlisted": true,
+    "images": {
+      "icon": "plugin-icon.svg"
+    },
+    "publisher": {
+      "name": "Nick Rimmer",
+      "icon": "https://www.gravatar.com/avatar/53a530a44db8d365a66bcdef9d49e23c"
+    }
+  },
+  "main": "src/index.js",
+  "author": "Nick Rimmer <xan@dipteam.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NickRimmer/insomnia-plugin-oa2-mate.git",
+    "directory": ""
+  },
+  "bugs": {
+    "url": "https://github.com/NickRimmer/insomnia-plugin-oa2-mate/issues"
+  },
+  "scripts": {
+    "publish": "node npm/generate-package.js && copyfiles -u 2 ./npm/content/* ./dist/ && copyfiles -u 1 ./src/* ./dist/ && cd dist && npm publish",
+    "publish-dry": "node npm/generate-package.js && copyfiles -u 2 ./npm/content/* ./dist/ && copyfiles -u 1 ./src/* ./dist/ && cd dist && npm publish --dry-run"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "request": "^2.88.0",
+    "semver": "^7.3.8"
+  }
+}
