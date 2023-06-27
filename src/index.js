@@ -47,7 +47,7 @@ const getOa2 = (workspaceId, state) => {
         return null
     }
 
-    let latest = workspaceTokens.sort((a, b) => a.created - b.created)[0]
+    let latest = workspaceTokens.sort((a, b) => b.modified - a.modified)[0]
     return latest.accessToken
 }
 
