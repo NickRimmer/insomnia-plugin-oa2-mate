@@ -55,6 +55,7 @@ async function executeAsync() {
   }
 
   const resultJson = JSON.stringify(resultObj, null, 2)
+  if (!fs.existsSync('dist')) fs.mkdirSync('dist');
   fs.writeFileSync('dist/package.json', resultJson)
 }
 
