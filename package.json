@@ -8,7 +8,7 @@
     "description": "Always ready with the latest oAuth 2 token as template variable. Have a stress-free coding/testing!",
     "unlisted": true,
     "images": {
-      "icon": "plugin-icon.svg"
+      "icon": "oa2-mate-icon.jpg"
     },
     "publisher": {
       "name": "Nick Rimmer",
