@@ -33,7 +33,7 @@ Open your environment settings and add default header there for authorization. Y
 <img src="npm/content/how-to-2.jpg" alt="Step 3">
 
 ### Step 4
-Open your request, make sure there is no authentication configured and run it. Default headers will insert authorization one with value provided by plugin
+Open your request, make sure there is no authentication configured and run it. Default headers will be inserted include authorization one with value provided by plugin
 
 <img src="npm/content/how-to-3.jpg" alt="Step 5">
 
