@@ -3,7 +3,6 @@
 import { BaseDoc } from './insomnia.types'
 
 let store: any = null
-let state: any = null
 
 export const getStore = (): any => {
   if (!store) {
@@ -16,12 +15,8 @@ export const getStore = (): any => {
 }
 
 export const getState = (): any => {
-  if (!state) {
-    const store = getStore()
-    state = store.getState()
-  }
-
-  return state
+  const store = getStore()
+  return store.getState()
 }
 
 export const getActiveWorkspace = (): BaseDoc => {
