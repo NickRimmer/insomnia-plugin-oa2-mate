@@ -13,6 +13,7 @@ const onTokenUpdate = (token: BaseDoc) => {
     accessToken: token.accessToken,
     environmentId: activeEnvironment?._id ?? null,
     workspaceId: activeWorkspace._id,
+    createdAt: Date.now(),
   }
 
   database.update<StoredToken>(
@@ -29,6 +30,13 @@ const getTokenAsync = (workspaceId: string, environmentId: string | null) => new
   database.findOne<StoredToken | null>({ workspaceId, environmentId }, (err, doc) => {
     if (err) reject(err)
     else resolve(doc)
+  })
+})
+
+const getTokensAsync = (workspaceId: string) => new Promise<StoredToken[]>((resolve, reject) => {
+  database.find<StoredToken>({ workspaceId }, {}, (err, docs) => {
+    if (err) reject(err)
+    else resolve(docs ?? [])
   })
 })
 
@@ -56,4 +64,11 @@ export const getCurrentTokenAsync = async (): Promise<StoredToken | null> => {
   const activeWorkspace = getActiveWorkspace()
   const activeEnvironment = getActiveEnvironment()
   return await getTokenAsync(activeWorkspace._id, activeEnvironment?._id ?? null)
+}
+
+export const getLatestTokenAsync = async (): Promise<StoredToken | null> => {
+  const activeWorkspace = getActiveWorkspace()
+  const tokens = await getTokensAsync(activeWorkspace._id)
+  if (tokens.length === 0) return null
+  return tokens.reduce((prev, curr) => prev.createdAt > curr.createdAt ? prev : curr, tokens[0] ?? null)
 }
