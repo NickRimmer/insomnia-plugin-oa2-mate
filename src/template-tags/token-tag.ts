@@ -4,7 +4,7 @@ import { getCurrentTokenAsync, getLatestTokenAsync } from '../services/main'
 export const tokenTag: PluginTemplateTag = {
   name: 'oa2_mate',
   displayName: 'oa2_mate',
-  description: 'Latest known OAuth2 token for current environment',
+  description: 'Latest known OAuth2 token for workspace or environment',
   args: [
     {
       displayName: 'Use environment-specific access tokens only.',

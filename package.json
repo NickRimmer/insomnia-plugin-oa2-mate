@@ -27,7 +27,7 @@
     "url": "https://github.com/NickRimmer/insomnia-plugin-oa2-mate/issues"
   },
   "scripts": {
-    "build-npm": "node npm/generate-package.js && copyfiles -u 2 ./npm/content/* ./dist/",
+    "build-npm": "node npm/generate-package.js && copyfiles -u 2 ./npm/content/* ./dist/ && copyfiles ./README.md ./dist/",
     "build": "esr esbuild.ts && npm run build-npm",
     "watch-trigger": "esr esbuild.ts && npm run install",
     "watch": "npm run build-npm && npm-watch watch-trigger",
