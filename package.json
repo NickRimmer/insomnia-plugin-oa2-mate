@@ -36,7 +36,8 @@
     "publish-dry": "npm run build && cd dist && npm publish --dry-run",
     "install": "copyfiles -u 1 ./dist/* %appdata%/insomnia/plugins/insomnia-plugin-oa2-mate",
     "install-dev": "copyfiles -u 1 ./dist/* %appdata%/insomnia-app/plugins/insomnia-plugin-oa2-mate",
-    "lint": "eslint --ext .ts,.tsx ."
+    "lint": "eslint --ext .ts,.tsx .",
+    "lint-fix": "eslint --ext .ts,.tsx --fix ."
   },
   "watch": {
     "watch-trigger": {
