@@ -49,6 +49,7 @@
     "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
+    "@types/nedb": "^1.8.13",
     "copyfiles": "^2.4.1",
     "request": "^2.88.0",
     "semver": "^7.3.8",
