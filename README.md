@@ -9,7 +9,19 @@ Welcome aboard the 'oAuth 2 Mate' express! 🚀
 
 Your passport to simpler authorization is just a click away. Happy coding! 🎉
 
-## How to use
+# Features
+
+This 'OAuth 2 Mate' plugin comes with a handful of handy features that help simplify your Insomnia workflows. Let's dive in.
+
+### Template Tags for Easy Token Insertion
+With 'OAuth 2 Mate', it's easy to inject your access tokens straight into your global headers as bearer authorization tokens or use as a request headers, you can even put access token to request body. All you have to do is use the provided template tag `oa2_mate`, and voila — you've got your authorization sorted!
+
+### Environment-Specific Access Tokens
+Working within a specific environment and need its related access token? 'OAuth 2 Mate' has got your back. When the 'Use environment-specific access tokens only.' option is checked, the plugin will provide you with the freshest access token specific to your current environment.
+
+<img src="npm/content/feature-environments.jpg" alt="Environment-specific token">
+
+# How to use
 This is just one of examples (;
 
 ### Step 1
