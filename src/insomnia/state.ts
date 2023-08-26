@@ -3,28 +3,28 @@
 
 let router: any = null
 
-var getRouter = (): any => {
+const getRouter = (): any => {
   if (!router) {
-    const root = document.querySelector("#root") as Record<string, any>;
+    const root = document.querySelector('#root') as Record<string, any>
     if (!root) {
-      return;
+      return
     }
-    const parameter = Object.getOwnPropertyNames(root).findLast((x) => x.startsWith("__reactContainer"));
-    router = root[parameter as string]?.memoizedState?.element?.props?.router;
+    const parameter = Object.getOwnPropertyNames(root).findLast((x) => x.startsWith('__reactContainer'))
+    router = root[parameter as string]?.memoizedState?.element?.props?.router
   }
-  return router;
-};
+  return router
+}
 
 export const getState = () => {
-  const router = getRouter();
-  return router?.state;
-};
+  const router = getRouter()
+  return router?.state
+}
 
 export const getActiveWorkspaceId = (): string => {
-  const state = getState();
-  return state?.loaderData[":workspaceId"].activeWorkspace._id
+  const state = getState()
+  return state?.loaderData[':workspaceId'].activeWorkspace._id
 }
 export const getActiveEnvironmentId = (): string => {
-  const state = getState();
-  return state?.loaderData[":workspaceId"].activeEnvironment._id
+  const state = getState()
+  return state?.loaderData[':workspaceId'].activeEnvironment._id
 }

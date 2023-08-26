@@ -61,13 +61,13 @@ export const init = async () => {
 }
 
 export const getCurrentTokenAsync = async (): Promise<StoredToken | null> => {
-  const activeWorkspaceId = getActiveWorkspaceId();
+  const activeWorkspaceId = getActiveWorkspaceId()
   const activeEnvironmentId = getActiveEnvironmentId()
   return await getTokenAsync(activeWorkspaceId, activeEnvironmentId ?? null)
 }
 
 export const getLatestTokenAsync = async (): Promise<StoredToken | null> => {
-  const activeWorkspaceId = getActiveWorkspaceId();
+  const activeWorkspaceId = getActiveWorkspaceId()
   const tokens = await getTokensAsync(activeWorkspaceId)
   if (tokens.length === 0) return null
   return tokens.reduce((prev, curr) => prev.createdAt > curr.createdAt ? prev : curr, tokens[0] ?? null)
