@@ -1,18 +1,18 @@
-import { BaseDoc, subscribe, getActiveEnvironment, getActiveWorkspace } from '../insomnia'
+import { BaseDoc, subscribe, getActiveEnvironmentId, getActiveWorkspaceId } from '../insomnia'
 import { database } from '../services/db'
 import { StoredToken } from './main.types'
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 const onTokenUpdate = (token: BaseDoc) => {
-  const activeWorkspace = getActiveWorkspace()
-  const activeEnvironment = getActiveEnvironment()
+  const activeWorkspaceId = getActiveWorkspaceId()
+  const activeEnvironmentId = getActiveEnvironmentId()
   // console.log('[oa2-mate] Token updated', { requestId: token.parentId, accessToken: token.accessToken })
 
   const tokenToStore: StoredToken = {
     accessToken: token.accessToken,
-    environmentId: activeEnvironment?._id ?? null,
-    workspaceId: activeWorkspace._id,
+    environmentId: activeEnvironmentId ?? null,
+    workspaceId: activeWorkspaceId,
     createdAt: Date.now(),
   }
 
@@ -61,14 +61,14 @@ export const init = async () => {
 }
 
 export const getCurrentTokenAsync = async (): Promise<StoredToken | null> => {
-  const activeWorkspace = getActiveWorkspace()
-  const activeEnvironment = getActiveEnvironment()
-  return await getTokenAsync(activeWorkspace._id, activeEnvironment?._id ?? null)
+  const activeWorkspaceId = getActiveWorkspaceId()
+  const activeEnvironmentId = getActiveEnvironmentId()
+  return await getTokenAsync(activeWorkspaceId, activeEnvironmentId ?? null)
 }
 
 export const getLatestTokenAsync = async (): Promise<StoredToken | null> => {
-  const activeWorkspace = getActiveWorkspace()
-  const tokens = await getTokensAsync(activeWorkspace._id)
+  const activeWorkspaceId = getActiveWorkspaceId()
+  const tokens = await getTokensAsync(activeWorkspaceId)
   if (tokens.length === 0) return null
   return tokens.reduce((prev, curr) => prev.createdAt > curr.createdAt ? prev : curr, tokens[0] ?? null)
 }
